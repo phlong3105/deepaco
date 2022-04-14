@@ -17,7 +17,6 @@ import onevision.models.detection.scaled_yolov4.test as test
 import onevision.models.detection.scaled_yolov4.train as train
 from aic import pretrained_dir
 
-yolov4_pretrained_dir = os.path.join(pretrained_dir, "scaled_yolov4")
 yolov4_root           = os.path.dirname(os.path.abspath(train.__file__))
 root                  = os.path.dirname(pretrained_dir)
 content_root_dir      = os.path.dirname(os.path.dirname(os.path.dirname(pretrained_dir)))
@@ -28,9 +27,9 @@ data_dir              = os.path.join(content_root_dir, "data", "aic22retail")
 
 train_configs = {
     "yolov4-p5_aic22retail117_448" : {
-        "weights"        : os.path.join(yolov4_pretrained_dir, "yolov4-p5_coco.pt"),
+        "weights"        : os.path.join(pretrained_dir, "scaled_yolov4", "yolov4-p5_coco.pt"),
         "cfg"            : os.path.join(yolov4_root, "models", "yolov4-p5.yaml"),
-        "data"           : os.path.join(yolov4_root, "data",   "aic22retail117.yaml"),
+        "data"           : "aic22retail117.yaml",
         "hyp"            : os.path.join(yolov4_root, "data",   "hyp.scratch.yaml"),
         "epochs"         : 50,
         "batch_size"     : 8,
@@ -50,12 +49,12 @@ train_configs = {
         "adam"           : False,
         "sync_bn"        : True,
         "local_rank"     : -1,
-        "logdir"         : f"{pretrained_dir}/scaled_yolov4",
+        "logdir"         : os.path.join(pretrained_dir, "scaled_yolov4"),
     },
     "yolov4-p5_aic22retail117_896" : {
-        "weights"        : os.path.join(yolov4_pretrained_dir, "yolov4-p5_coco.pt"),
+        "weights"        : os.path.join(pretrained_dir, "scaled_yolov4", "yolov4-p5_coco.pt"),
         "cfg"            : os.path.join(yolov4_root, "models", "yolov4-p5.yaml"),
-        "data"           : os.path.join(yolov4_root, "data",   "aic22retail117.yaml"),
+        "data"           : "aic22retail117.yaml",
         "hyp"            : os.path.join(yolov4_root, "data",   "hyp.scratch.yaml"),
         "epochs"         : 50,
         "batch_size"     : 4,
@@ -75,12 +74,12 @@ train_configs = {
         "adam"           : False,
         "sync_bn"        : True,
         "local_rank"     : -1,
-        "logdir"         : f"{pretrained_dir}/scaled_yolov4",
+        "logdir"         : os.path.join(pretrained_dir, "scaled_yolov4"),
     },
     "yolov4-p7_aic22retail117_1536": {
-        "weights"        : os.path.join(yolov4_pretrained_dir, "yolov4-p7_coco.pt"),
+        "weights"        : os.path.join(pretrained_dir, "scaled_yolov4", "yolov4-p7_coco.pt"),
         "cfg"            : os.path.join(yolov4_root, "models", "yolov4-p7.yaml"),
-        "data"           : os.path.join(yolov4_root, "data",   "aic22retail117.yaml"),
+        "data"           : "aic22retail117.yaml",
         "hyp"            : os.path.join(yolov4_root, "data",   "hyp.scratch.yaml"),
         "epochs"         : 20,
         "batch_size"     : 4,
@@ -100,7 +99,7 @@ train_configs = {
         "adam"           : False,
         "sync_bn"        : True,
         "local_rank"     : -1,
-        "logdir"         : f"{pretrained_dir}/scaled_yolov4",
+        "logdir"         : os.path.join(pretrained_dir, "scaled_yolov4"),
     },
 }
 

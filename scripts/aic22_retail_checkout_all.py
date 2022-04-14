@@ -21,12 +21,19 @@ from onevision import load_config
 
 os.environ["KMP_DUPLICATE_LIB_OK"] = "True"
 
-configs = [
+configs_a = [
     "testA_1.yaml",
     "testA_2.yaml",
     "testA_3.yaml",
     "testA_4.yaml",
     "testA_5.yaml"
+]
+configs_b = [
+    "testB_1.yaml",
+    "testB_2.yaml",
+    "testB_3.yaml",
+    "testB_4.yaml",
+    "testB_5.yaml"
 ]
 
 
@@ -39,6 +46,14 @@ def main(args):
     process_start_time = timer()
     camera_start_time  = timer()
     camera_init_time   = timer() - camera_start_time
+
+    if args.subset not in ["test_a", "test_b"]:
+        raise ValueError(f"`subset` must be one of ['test_a', 'test_b']. "
+                         f"But got: {args.subset}.")
+    if args.subset == "test_a":
+        configs = configs_a
+    else:
+        configs = configs_b
     
     for cfg in configs:
         # NOTE: Parse camera config
@@ -67,22 +82,21 @@ def main(args):
     console.log(f"Camera init time: {camera_init_time} seconds.")
     console.log(f"Actual processing time: {total_process_time - camera_init_time} seconds.")
 
-    AIC22RetailCheckoutWriter.compress_all_results(output_dir=os.path.join(data_dir, args.dataset, "output"))
+    AIC22RetailCheckoutWriter.compress_all_results(
+        output_dir=os.path.join(data_dir, args.dataset, "output"),
+        subset=args.subset
+    )
 
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Config parser")
-    parser.add_argument("--dataset", default="aic22retail", help="Dataset to run on.")
-    parser.add_argument("--subset",  default="test_a",      help="Subset name. One of: [`test_a`, `test_b`].")
-    parser.add_argument("--configs", default="configs_yolov4p5_448",)
-    parser.add_argument(
-        "--config", default="testA_5.yaml",
-        help="Config file for each camera. Final path to the config file is: ../data/<dataset>/configs/<config>/"
-    )
-    parser.add_argument("--batch_size",   default=1,    type=int, help="Max batch size")
+    parser.add_argument("--dataset",      default="aic22retail", help="Dataset to run on.")
+    parser.add_argument("--subset",       default="test_b",      help="Subset name. One of: [`test_a`, `test_b`].")
+    parser.add_argument("--configs",      default="configs_yolov4p5_448",)
+    parser.add_argument("--batch_size",   default=1,     type=int, help="Max batch size")
     parser.add_argument("--verbose",      default=False, help="Should visualize the images.")
-    parser.add_argument("--save_image",   default=True, help="Should save results to images.")
-    parser.add_argument("--save_video",   default=True,  help="Should save results to a video.")
+    parser.add_argument("--save_image",   default=False, help="Should save results to images.")
+    parser.add_argument("--save_video",   default=False, help="Should save results to a video.")
     parser.add_argument("--save_results", default=True,  help="Should save results to file.")
     args = parser.parse_args()
     return args
