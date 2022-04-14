@@ -5,14 +5,6 @@ AI City Challenge.
 
 ## Installation
 
-The directories should be organized as follows:
-
-```text
-one
-  |__ datasets (this folder contains the actual raw data)
-  |__ aic
-```
-
 We recommend to use Python 3.9+ and PyTorch (version >= v1.11.0) with `conda` environment.
 The `aic22_track4` can be installed in the local python environment using the below commands:
 
@@ -42,9 +34,9 @@ one
         |__ data
               |__ aic22retail
                     |__ test_a
-                          |__ testA_1.mp4
-                          |__ testA_2.mp4
-                          |__ ..
+                    |     |__ testA_1.mp4
+                    |     |__ testA_2.mp4
+                    |     |__ ..
                     |__ test_b
                           |__ testB_1.mp4
                           |__ testB_2.mp4
@@ -61,4 +53,14 @@ python aic22_retail_checkout_all.py --subset "test_b" --configs "configs_yolov4p
 
 # Run asynchronous processing pipeline
 python aic22_retail_checkout_all_async.py --subset "test_b" --configs "configs_yolov4p5_448" --save_results True
+```
+
+## Training
+
+Download and copy training data to `one/datasets`:
+```text
+one
+  |__ datasets (this folder contains the actual raw data)
+  |     |__ aicity
+  |__ aic22_track4
 ```
