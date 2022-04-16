@@ -4,8 +4,7 @@ This repository, `aic22_track4`, contains the source code for building solutions
 for the 2022 AI City Challenge Track 4 (Multi-Class Product Counting & 
 Recognition for Automated Retail Checkout).
 
-![Example 01](docs/testA_1.gif)
-![Example 01](docs/testA_2.gif)
+![Example 02](docs/testA_2.gif)
 
 ## Installation
 
@@ -17,10 +16,11 @@ mkdir -p one
 mkdir -p one/datasets
 cd one
 
-# Install `aic22_track4` package (main solution)
+# Install `aic22_track4` package
 git clone git@github.com:phlong3105/aic22_track4
 cd aic22_track4/install
 sh ./setup_linux.sh    # Create conda environment
+
 sudo ./setup_linux.sh  
 # Install package using `sudo`. When prompt to input the dataset directory 
 # path, you should enter: <some-path>/one/datasets
