@@ -16,13 +16,15 @@ cd one
 # Install `aic22_track4` package (main solution)
 git clone git@github.com:phlong3105/aic22_track4
 cd aic22_track4/install
-sh ./install_env_linux.sh    # Create conda environment
-sudo ./install_env_linux.sh  # Install package using `sudo`
+sh ./setup_linux.sh    # Create conda environment
+sudo ./setup_linux.sh  
+# Install package using `sudo`. When prompt to input the dataset directory 
+# path, you should enter: <some-path>/one/datasets
+
 pip install -e .
 ```
 
-Download pretrained models and copy them to `aic22_track4/src/aic/pretrained/scaled_yolov4`:
-[https://drive.google.com/drive/folders/1xKCGTWnGmZBu5treyh_2i8ppWVhiOoFq?usp=sharing](https://drive.google.com/drive/folders/1xKCGTWnGmZBu5treyh_2i8ppWVhiOoFq?usp=sharing)
+Download [pretrained models](https://drive.google.com/drive/folders/1xKCGTWnGmZBu5treyh_2i8ppWVhiOoFq?usp=sharing) and copy them to `aic22_track4/src/aic/pretrained/scaled_yolov4`:
 
 ## Inference
 
@@ -57,10 +59,20 @@ python aic22_retail_checkout_all_async.py --subset "test_b" --configs "configs_y
 
 ## Training
 
-Download and copy training data to `one/datasets`:
+Download the training data [zip file](https://drive.google.com/file/d/1fCp6iFTKTD8yPb_HF8unvqCumJcJ9uoZ/view?usp=sharing) and extract it inside `one/datasets/aicity`:
 ```text
 one
   |__ datasets (this folder contains the actual raw data)
   |     |__ aicity
+  |           |__ aic22retail
   |__ aic22_track4
+```
+
+Run training script:
+```shell
+conda activate one  # By default, our conda environment is named `one`
+cd aic22_track4/scripts
+
+# Run training script
+python aic22_train_scaled_yolov4.py --run "train" --cfg "yolov4-p5_aic22retail117_448"
 ```

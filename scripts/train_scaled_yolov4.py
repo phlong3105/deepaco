@@ -104,7 +104,7 @@ train_configs = {
 }
 
 
-def run_train(cfg: str = "yolov4-p7_aic22retail117_1536"):
+def run_train(cfg: str = "yolov4-p5_aic22retail117_448"):
     if cfg in train_configs:
         opt = train_configs[cfg]
         opt = Namespace(**opt)
@@ -125,7 +125,7 @@ test_configs = {
 }
 
 
-def run_test(cfg: str = "yolov4-p7_aic22retail117_1536"):
+def run_test(cfg: str = "yolov4-p5_aic22retail117_448"):
     if cfg in train_configs:
         opt = test_configs[cfg]
         test.main(opt)
@@ -153,7 +153,7 @@ detect_configs = {
 }
 
 
-def run_detect(cfg: str = "yolov4-p7_aic22retail117_1536"):
+def run_detect(cfg: str = "yolov4-p5_aic22retail117_448"):
     if cfg in detect_configs:
         opt = detect_configs[cfg]
         opt = Namespace(**opt)
@@ -165,8 +165,8 @@ def run_detect(cfg: str = "yolov4-p7_aic22retail117_1536"):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--run", default="train",                         type=str)
-    parser.add_argument("--cfg", default="yolov4-csp_aic22retail117_448", type=str)
+    parser.add_argument("--run", default="train",                        type=str)
+    parser.add_argument("--cfg", default="yolov4-p5_aic22retail117_448", type=str)
     opt = parser.parse_args()
     
     if opt.run == "train":
