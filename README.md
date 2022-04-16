@@ -1,7 +1,11 @@
 # AIC: A library for AI City Challenge
 
-This repository, `aic`, contains the source code for building solutions for 
-AI City Challenge.
+This repository, `aic22_track4`, contains the source code for building solutions 
+for the 2022 AI City Challenge Track 4 (Multi-Class Product Counting & 
+Recognition for Automated Retail Checkout).
+
+![Example 01](docs/testA_1.gif)
+![Example 01](docs/testA_2.gif)
 
 ## Installation
 
@@ -75,4 +79,18 @@ cd aic22_track4/scripts
 
 # Run training script
 python aic22_train_scaled_yolov4.py --run "train" --cfg "yolov4-p5_aic22retail117_448"
+```
+
+## Citation
+
+If you find our work useful, please cite the following:
+
+```text
+@inproceedings{Pham2022,  
+    author={Long Hoang Pham, Duong Nguyen-Ngoc Tran, Huy-Hung Nguyen, 
+            Tai Huu-Phuong Tran, Hyung-Joon Jeon, Hyung-Min Jeon, and Jae Wook Jeon},  
+    title={DeepACO: A Robust Deep Learning-based Automatic Checkout System},  
+    booktitle={CVPR Workshop},
+    year={2022}  
+}
 ```
