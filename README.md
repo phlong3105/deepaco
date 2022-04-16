@@ -1,14 +1,16 @@
-# AIC: A library for AI City Challenge
+# DeepACO: A Robust Deep Learning-based Automatic Checkout System
 
-This repository, `aic22_track4`, contains the source code for building solutions 
-for the 2022 AI City Challenge Track 4 (Multi-Class Product Counting & 
-Recognition for Automated Retail Checkout).
+This repository contains our team's (SKKU Automation Lab) source code for 
+building solutions for the 2022 AI City Challenge Track 4 
+(Multi-Class Product Counting & Recognition for Automated Retail Checkout). 
 
 ![Example 02](docs/testA_2.gif)
 
 ## Installation
 
 We recommend to use Python 3.9+ and PyTorch (version >= v1.11.0) with `conda` environment.
+We also mainly used PyCharm for both debugging and inference. 
+
 The `aic22_track4` can be installed in the local python environment using the below commands:
 
 ```shell
@@ -86,7 +88,7 @@ python aic22_train_scaled_yolov4.py --run "train" --cfg "yolov4-p5_aic22retail11
 If you find our work useful, please cite the following:
 
 ```text
-@inproceedings{Pham2022,  
+@inreview{Pham2022,  
     author={Long Hoang Pham, Duong Nguyen-Ngoc Tran, Huy-Hung Nguyen, 
             Tai Huu-Phuong Tran, Hyung-Joon Jeon, Hyung-Min Jeon, and Jae Wook Jeon},  
     title={DeepACO: A Robust Deep Learning-based Automatic Checkout System},  
