@@ -51,7 +51,7 @@ one
         |                 |__ ..
         |__ src
               |__ aic
-                    |__ pretrain
+                    |__ pretrained
                     |     |__ scaled_yolov4
                     |__ ...
 ```
