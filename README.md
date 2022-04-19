@@ -8,8 +8,8 @@ building solutions for the 2022 AI City Challenge Track 4
 
 ## Installation
 
-We recommend to use Python 3.9+ and PyTorch (version >= v1.11.0) with `conda` environment.
-We also mainly used PyCharm for both debugging and inference. 
+We recommend using Python 3.9+ and PyTorch (version >= v1.11.0) with `conda` environment.
+We also use PyCharm as the main IDE. 
 
 The `aic22_track4` can be installed in the local python environment using the below commands:
 
@@ -30,25 +30,30 @@ sudo ./setup_linux.sh
 pip install -e .
 ```
 
-Download [pretrained models](https://drive.google.com/drive/folders/1xKCGTWnGmZBu5treyh_2i8ppWVhiOoFq?usp=sharing) and copy them to `aic22_track4/src/aic/pretrained/scaled_yolov4`:
-
 ## Inference
 
-Download and copy testing videos to `aic22_track4/data/aic22retail/test_b`:
+Download [pretrained models](https://drive.google.com/drive/folders/1xKCGTWnGmZBu5treyh_2i8ppWVhiOoFq?usp=sharing) and copy them to `aic22_track4/src/aic/pretrained/scaled_yolov4`
+
+Download and copy testing videos to `aic22_track4/data/aic22retail/test_b`
 ```text
 one
   |__ datasets (this folder contains the actual raw data)
   |__ aic22_track4
         |__ data
-              |__ aic22retail
-                    |__ test_a
-                    |     |__ testA_1.mp4
-                    |     |__ testA_2.mp4
-                    |     |__ ..
-                    |__ test_b
-                          |__ testB_1.mp4
-                          |__ testB_2.mp4
-                          |__ ..
+        |     |__ aic22retail
+        |           |__ test_a
+        |           |     |__ testA_1.mp4
+        |           |     |__ testA_2.mp4
+        |           |     |__ ..
+        |           |__ test_b
+        |                 |__ testB_1.mp4
+        |                 |__ testB_2.mp4
+        |                 |__ ..
+        |__ src
+              |__ aic
+                    |__ pretrain
+                    |     |__ scaled_yolov4
+                    |__ ...
 ```
 
 Run inference code:
