@@ -94,8 +94,8 @@ If you find our work useful, please cite the following:
 
 ```text
 @inreview{Pham2022,  
-    author={Long Hoang Pham, Duong Nguyen-Ngoc Tran, Huy-Hung Nguyen, 
-            Tai Huu-Phuong Tran, Hyung-Joon Jeon, Hyung-Min Jeon, and Jae Wook Jeon},  
+    author={Long Hoang Pham and Duong Nguyen-Ngoc Tran and Huy-Hung Nguyen and 
+            Tai Huu-Phuong Tran and Hyung-Joon Jeon and Hyung-Min Jeon and Jae Wook Jeon},  
     title={DeepACO: A Robust Deep Learning-based Automatic Checkout System},  
     booktitle={CVPR Workshop},
     year={2022}  
