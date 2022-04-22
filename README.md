@@ -8,7 +8,7 @@ building solutions for the 2022 AI City Challenge Track 4
 
 ## Installation
 
-We recommend using Python 3.9+ and PyTorch (version >= v1.11.0) with `conda` environment.
+We recommend using Ubuntu 20.04, Python 3.9+ and PyTorch (version >= v1.11.0) with `conda` environment .
 We also use PyCharm as the main IDE. 
 
 The `aic22_track4` can be installed in the local python environment using the below commands:
