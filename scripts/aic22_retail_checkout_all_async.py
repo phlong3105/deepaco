@@ -87,7 +87,7 @@ def main(args):
 def parse_args():
     parser = argparse.ArgumentParser(description="Config parser")
     parser.add_argument("--dataset",      default="aic22retail", help="Dataset to run on.")
-    parser.add_argument("--subset",       default="test_b",      help="Subset name. One of: [`test_a`, `test_b`].")
+    parser.add_argument("--subset",       default="test_a",      help="Subset name. One of: [`test_a`, `test_b`].")
     parser.add_argument("--configs",      default="configs_yolov4p5_448", )
     parser.add_argument("--batch_size",   default=16,    type=int, help="Max batch size")
     parser.add_argument("--queue_size",   default=1,     type=int, help="Max queue size")

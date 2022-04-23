@@ -42,12 +42,20 @@ class AIC22RetailCheckoutWriter:
 	"""
 	
 	# Numeric identifier of input camera stream
-	video_map = {
+	video_map_a = {
 		"testA_1": 1,
 		"testA_2": 2,
 		"testA_3": 3,
 		"testA_4": 4,
 		"testA_5": 5,
+	}
+	
+	video_map_b = {
+		"testB_1": 1,
+		"testB_2": 2,
+		"testB_3": 3,
+		"testB_4": 4,
+		"testB_5": 5,
 	}
 	
 	# MARK: Magic Function
@@ -57,10 +65,18 @@ class AIC22RetailCheckoutWriter:
 		dst 	   : str,
 		camera_name: str,
 		start_time : float = timer(),
+		subset     : str = "test_a",
 		*args, **kwargs
 	):
 		super().__init__()
-		if camera_name not in self.video_map:
+		if subset not in ["test_a", "test_b"]:
+			raise ValueError(f"`subset` must be one of ['test_a', 'test_b']. "
+			                 f"But got: {subset}.")
+		if subset == "test_a":
+			video_map = self.video_map_a
+		else:
+			video_map = self.video_map_b
+		if camera_name not in video_map:
 			raise ValueError(
 				f"The given `camera_name` has not been defined in AIC camera "
 			    f"list. Please check again!"
@@ -68,7 +84,7 @@ class AIC22RetailCheckoutWriter:
 
 		self.dst		 = dst
 		self.camera_name = camera_name
-		self.video_id 	 = self.video_map[camera_name]
+		self.video_id 	 = video_map[camera_name]
 		self.start_time  = start_time
 		self.lines 		 = []
 		# self.init_writer(dst=self.dst)
@@ -149,24 +165,35 @@ class AIC22RetailCheckoutWriter:
 	def compress_all_results(
 		cls,
 		output_dir : Optional[str] = None,
-		output_name: Optional[str] = None
+		output_name: Optional[str] = None,
+		subset     : str           = "test_a"
 	):
 		"""Compress all result of video into one file
 		
 		Args:
 			output_dir (str):
 				Directory of output track1.txt will be written
-			output_name:
+			output_name (str):
 				Final compress result name
 					e.g.: "track1.txt"
+			subset (str):
+				Subset name. One of: [`test_a`, `test_b`].
 		"""
+		if subset not in ["test_a", "test_b"]:
+			raise ValueError(f"`subset` must be one of ['test_a', 'test_b']. "
+			                 f"But got: {subset}.")
+		if subset == "test_a":
+			video_map = cls.video_map_a
+		else:
+			video_map = cls.video_map_b
+		
 		output_dir 		= output_dir  if (output_dir is not None)  else ""
 		output_name 	= output_name if (output_name is not None) else "track4"
 		output_name 	= os.path.join(output_dir, f"{output_name}.txt")
 		compress_writer = open(output_name, "w")
-	
+		
 		# NOTE: Get result from each file
-		for video_name, video_id in cls.video_map.items():
+		for video_name, video_id in video_map.items():
 			video_result_file = os.path.join(output_dir, f"{video_name}.txt")
 	
 			if not os.path.exists(video_result_file):

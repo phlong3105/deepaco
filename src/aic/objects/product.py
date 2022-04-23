@@ -103,9 +103,9 @@ class Product(BaseMovingObject):
             if roi.is_box_in_or_touch_roi(box_xyxy=self.current_box) <= 0:
                 if self.untouches > Product.max_untouches_age:
                     self.moving_state = MovingState.Counted
-                elif (roi.is_box_in_or_touch_roi(box_xyxy=self.first_box) > 0 or
-                      self.traveled_distance_between(-1, -2) <= Product.min_traveled_distance):
-                    pass
+                # elif (roi.is_box_in_or_touch_roi(box_xyxy=self.first_box) > 0 or
+                #      self.traveled_distance_between(-1, -2) <= Product.min_traveled_distance):
+                #    pass
                     # self.moving_state = MovingState.Counted
                 else:
                     self.moving_state = MovingState.Counting
