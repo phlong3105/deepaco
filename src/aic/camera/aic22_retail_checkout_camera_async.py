@@ -31,8 +31,8 @@ from aic.pose_estimators import HandsEstimator
 from aic.trackers import BaseTracker
 from onevision import AppleRGB
 from onevision import ClassLabels
-from onevision import FrameLoader
-from onevision import FrameWriter
+from onevision import CVVideoLoader
+from onevision import CVVideoWriter
 
 __all__ = [
     "AIC22RetailCheckoutCameraAsync",
@@ -44,65 +44,65 @@ __all__ = [
 @CAMERAS.register(name="aic22_retail_checkout_camera_async")
 class AIC22RetailCheckoutCameraAsync(AIC22RetailCheckoutCamera):
     """AIC22 Retail Checkout Camera Asynchronous.
-    
-    Attributes:
-        id_ (int, str):
-            Camera's unique ID.
-        dataset (str):
-            Dataset name. It is also the name of the directory inside
-            `data_dir`. Default: `None`.
-        subset (str):
-            Subset name. One of: [`test_a`, `test_b`].
-        name (str):
-            Camera name. It is also the name of the camera's config files.
-            Default: `None`.
-        class_labels (ClassLabels):
-            List of all labels' dicts.
-        rois (list[ROI]):
-            List of ROIs.
-        mois (list[MOI]):
-            List of MOIs.
-        detector (BaseDetector):
-            Detector model.
-        tracker (BaseTracker):
-            Tracker object.
-        hands_estimator (HandsEstimator):
-            `HandsEstimator` object.
-        moving_object_cfg (dict):
-            Config dictionary of moving object.
-        data_loader (FrameLoader):
-            Data loader object.
-        data_writer (FrameWriter):
-            Data writer object.
-        result_writer (AIC22RetailCheckoutWriter):
-            Result writer object.
-        queue_size (int):
-            Queue size for multithread.
-        verbose (bool):
-            Verbosity mode. Default: `False`.
-        save_image (bool):
-            Should save individual images? Default: `False`.
-        save_video (bool):
-            Should save video? Default: `False`.
-        save_results (bool):
-            Should save results? Default: `False`.
-        root_dir (str):
-            Root directory is the full path to the dataset.
-        configs_dir (str):
-            `configs` directory located inside the root directory.
-        rmois_dir (str):
-            `rmois` directory located inside the root directory.
-        outputs_dir (str):
-            `outputs` directory located inside the root directory.
-        video_dir (str):
-            `video` directory located inside the root directory.
-        mos (list):
-            List of current moving objects in the camera.
-        start_time (float):
-            Start timestamp.
-        pbar (tqdm):
-            Progress bar.
-    """
+	
+	Attributes:
+		id_ (int, str):
+			Camera's unique ID.
+		dataset (str):
+			Dataset name. It is also the name of the directory inside
+			`data_dir`. Default: `None`.
+		subset (str):
+			Subset name. One of: [`test_a`, `test_b`].
+		name (str):
+			Camera name. It is also the name of the camera's config files.
+			Default: `None`.
+		class_labels (ClassLabels):
+			List of all labels' dicts.
+		rois (list[ROI]):
+			List of ROIs.
+		mois (list[MOI]):
+			List of MOIs.
+		detector (BaseDetector):
+			Detector model.
+		tracker (BaseTracker):
+			Tracker object.
+		hands_estimator (HandsEstimator):
+			`HandsEstimator` object.
+		moving_object_cfg (dict):
+			Config dictionary of moving object.
+		data_loader (CVVideoLoader):
+			Data loader object.
+		data_writer (CVVideoWriter):
+			Data writer object.
+		result_writer (AIC22RetailCheckoutWriter):
+			Result writer object.
+		queue_size (int):
+			Queue size for multithread.
+		verbose (bool):
+			Verbosity mode. Default: `False`.
+		save_image (bool):
+			Should save individual images? Default: `False`.
+		save_video (bool):
+			Should save video? Default: `False`.
+		save_results (bool):
+			Should save results? Default: `False`.
+		root_dir (str):
+			Root directory is the full path to the dataset.
+		configs_dir (str):
+			`configs` directory located inside the root directory.
+		rmois_dir (str):
+			`rmois` directory located inside the root directory.
+		outputs_dir (str):
+			`outputs` directory located inside the root directory.
+		video_dir (str):
+			`video` directory located inside the root directory.
+		mos (list):
+			List of current moving objects in the camera.
+		start_time (float):
+			Start timestamp.
+		pbar (tqdm):
+			Progress bar.
+	"""
 
     # MARK: Magic Functions
 
@@ -119,8 +119,8 @@ class AIC22RetailCheckoutCameraAsync(AIC22RetailCheckoutCamera):
         tracker        : Union[BaseTracker,    dict],
         hands_estimator: Union[HandsEstimator, dict],
         moving_object  : dict,
-        data_loader    : Union[FrameLoader,    dict],
-        data_writer    : Union[FrameWriter,    dict],
+        data_loader    : Union[CVVideoLoader, dict],
+        data_writer    : Union[CVVideoWriter, dict],
         result_writer  : Union[AIC22RetailCheckoutWriter, dict],
         id_            : Union[int, str] = uuid.uuid4().int,
         queue_size     : int             = 10,
@@ -337,7 +337,7 @@ class AIC22RetailCheckoutCameraAsync(AIC22RetailCheckoutCamera):
             cv2.imshow(self.name, result)
             cv2.waitKey(1)
         if self.save_video:
-            self.data_writer.write_frame(image=result)
+            self.data_writer.write(image=result)
 
     # MARK: Visualize
 

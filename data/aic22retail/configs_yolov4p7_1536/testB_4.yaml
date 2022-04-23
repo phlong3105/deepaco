@@ -63,7 +63,7 @@ detector:
   # Pretrained weights file.
   shape: [1536, 1536, 3]
   # Input size as [H, W, C].
-  min_confidence: 0.3
+  min_confidence: 0.1
   # Detection confidence threshold. Disregard all detections that have a
   # confidence lower than this value.
   nms_max_overlap: 0.8

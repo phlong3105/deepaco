@@ -32,14 +32,14 @@ from aic.trackers import BaseTracker
 from onevision import AppleRGB
 from onevision import ClassLabels
 from onevision import error_console
-from onevision import FrameLoader
-from onevision import FrameWriter
 from onevision import is_basename
 from onevision import is_json_file
 from onevision import is_list_of
 from onevision import is_stem
 from onevision import is_video_file
 from onevision import progress_bar
+from onevision import CVVideoLoader
+from onevision import CVVideoWriter
 
 __all__ = [
     "AIC22RetailCheckoutCamera",
@@ -51,61 +51,61 @@ __all__ = [
 @CAMERAS.register(name="aic22_retail_checkout_camera")
 class AIC22RetailCheckoutCamera(BaseCamera):
     """AIC22 Retail Checkout Camera.
-    
-    Attributes:
-        id_ (int, str):
-            Camera's unique ID.
-        dataset (str):
-            Dataset name. It is also the name of the directory inside `data_dir`.
-            Default: `None`.
-        subset (str):
-            Subset name. One of: [`test_a`, `test_b`].
-        name (str):
-            Camera name. It is also the name of the camera's config files.
-            Default: `None`.
-        class_labels (ClassLabels):
-            List of all labels' dicts.
-        rois (list[ROI]):
-            List of ROIs.
-        mois (list[MOI]):
-            List of MOIs.
-        detector (BaseDetector):
-            Detector model.
-        tracker (BaseTracker):
-            Tracker object.
-        hands_estimator (HandsEstimator):
-            `HandsEstimator` object.
-        moving_object_cfg (dict):
-            Config dictionary of moving object.
-        data_loader (FrameLoader):
-            Data loader object.
-        data_writer (FrameWriter):
-            Data writer object.
-        result_writer (AIC22RetailCheckoutWriter):
-            Result writer object.
-        verbose (bool):
-            Verbosity mode. Default: `False`.
-        save_image (bool):
-            Should save individual images? Default: `False`.
-        save_video (bool):
-            Should save video? Default: `False`.
-        save_results (bool):
-            Should save results? Default: `False`.
-        root_dir (str):
-            Root directory is the full path to the dataset.
-        configs_dir (str):
-            `configs` directory located inside the root directory.
-        rmois_dir (str):
-            `rmois` directory located inside the root directory.
-        outputs_dir (str):
-            `outputs` directory located inside the root directory.
-        video_dir (str):
-            `video` directory located inside the root directory.
-        mos (list):
-            List of current moving objects in the camera.
-        start_time (float):
-            Start timestamp.
-    """
+	
+	Attributes:
+		id_ (int, str):
+			Camera's unique ID.
+		dataset (str):
+			Dataset name. It is also the name of the directory inside `data_dir`.
+			Default: `None`.
+		subset (str):
+			Subset name. One of: [`test_a`, `test_b`].
+		name (str):
+			Camera name. It is also the name of the camera's config files.
+			Default: `None`.
+		class_labels (ClassLabels):
+			List of all labels' dicts.
+		rois (list[ROI]):
+			List of ROIs.
+		mois (list[MOI]):
+			List of MOIs.
+		detector (BaseDetector):
+			Detector model.
+		tracker (BaseTracker):
+			Tracker object.
+		hands_estimator (HandsEstimator):
+			`HandsEstimator` object.
+		moving_object_cfg (dict):
+			Config dictionary of moving object.
+		data_loader (CVVideoLoader):
+			Data loader object.
+		data_writer (CVVideoWriter):
+			Data writer object.
+		result_writer (AIC22RetailCheckoutWriter):
+			Result writer object.
+		verbose (bool):
+			Verbosity mode. Default: `False`.
+		save_image (bool):
+			Should save individual images? Default: `False`.
+		save_video (bool):
+			Should save video? Default: `False`.
+		save_results (bool):
+			Should save results? Default: `False`.
+		root_dir (str):
+			Root directory is the full path to the dataset.
+		configs_dir (str):
+			`configs` directory located inside the root directory.
+		rmois_dir (str):
+			`rmois` directory located inside the root directory.
+		outputs_dir (str):
+			`outputs` directory located inside the root directory.
+		video_dir (str):
+			`video` directory located inside the root directory.
+		mos (list):
+			List of current moving objects in the camera.
+		start_time (float):
+			Start timestamp.
+	"""
 
     # MARK: Magic Functions
 
@@ -122,8 +122,8 @@ class AIC22RetailCheckoutCamera(BaseCamera):
         tracker        : Union[BaseTracker,    dict],
         hands_estimator: Union[HandsEstimator, dict],
         moving_object  : dict,
-        data_loader    : Union[FrameLoader,    dict],
-        data_writer    : Union[FrameWriter,    dict],
+        data_loader    : Union[CVVideoLoader, dict],
+        data_writer    : Union[CVVideoWriter, dict],
         result_writer  : Union[AIC22RetailCheckoutWriter, dict],
         id_            : Union[int, str] = uuid.uuid4().int,
         verbose        : bool            = False,
@@ -287,14 +287,14 @@ class AIC22RetailCheckoutCamera(BaseCamera):
         Product.min_touched_landmarks = cfg["min_touched_landmarks"]
         Product.max_untouches_age     = cfg["max_untouches_age"]
 
-    def init_data_loader(self, data_loader: Union[FrameLoader, dict]):
+    def init_data_loader(self, data_loader: Union[CVVideoLoader, dict]):
         """Initialize data loader.
 
         Args:
-            data_loader (FrameLoader, dict):
+            data_loader (CVVideoLoader, dict):
                 Data loader object or a data loader's config dictionary.
         """
-        if isinstance(data_loader, FrameLoader):
+        if isinstance(data_loader, CVVideoLoader):
             self.data_loader = data_loader
         elif isinstance(data_loader, dict):
             data = data_loader.get("data", "")
@@ -306,18 +306,18 @@ class AIC22RetailCheckoutCamera(BaseCamera):
                 data_loader["data"] = os.path.join(self.video_dir, f"{data}.mp4")
             else:
                 data_loader["data"] = os.path.join(self.video_dir, f"{self.name}.mp4")
-            self.data_loader = FrameLoader(**data_loader)
+            self.data_loader = CVVideoLoader(**data_loader)
         else:
             raise ValueError(f"Cannot initialize data loader with {data_loader}.")
 
-    def init_data_writer(self, data_writer: Union[FrameWriter, dict]):
+    def init_data_writer(self, data_writer: Union[CVVideoWriter, dict]):
         """Initialize data writer.
 
         Args:
-            data_writer (FrameWriter, dict):
+            data_writer (CVVideoWriter, dict):
                 Data writer object or a data writer's config dictionary.
         """
-        if isinstance(data_writer, FrameWriter):
+        if isinstance(data_writer, CVVideoWriter):
             self.data_writer = data_writer
         elif isinstance(data_writer, dict):
             dst = data_writer.get("dst", "")
@@ -331,7 +331,7 @@ class AIC22RetailCheckoutCamera(BaseCamera):
                 data_writer["dst"] = os.path.join(self.outputs_dir, f"{self.name}.mp4")
             data_writer["save_image"] = self.save_image
             data_writer["save_video"] = self.save_video
-            self.data_writer          = FrameWriter(**data_writer)
+            self.data_writer          = CVVideoWriter(**data_writer)
 
     def init_result_writer(self, result_writer: Union[AIC22RetailCheckoutWriter, dict]):
         """Initialize data writer.
@@ -451,7 +451,7 @@ class AIC22RetailCheckoutCamera(BaseCamera):
             cv2.imshow(self.name, result)
             cv2.waitKey(1)
         if self.save_video:
-            self.data_writer.write_frame(image=result)
+            self.data_writer.write(image=result)
 
     # MARK: Visualize
 

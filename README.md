@@ -21,11 +21,13 @@ cd one
 # Install `aic22_track4` package
 git clone git@github.com:phlong3105/aic22_track4
 cd aic22_track4/install
-sh ./setup_linux.sh    # Create conda environment
+sh ./install.sh    # Create conda environment
+sudo ./install.sh  # Install package using `sudo`. When prompt to input the 
+                   # dataset directory path, you should enter: <some-path>/one/datasets
 
-sudo ./setup_linux.sh  
-# Install package using `sudo`. When prompt to input the dataset directory 
-# path, you should enter: <some-path>/one/datasets
+# Install `mish-cuda` package
+cd mish-cuda
+python setup.py build install
 
 pip install -e .
 ```
