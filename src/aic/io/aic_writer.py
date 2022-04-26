@@ -37,11 +37,12 @@ class AIC22RetailCheckoutWriter:
 			Numeric identifier of input camera stream.
 		start_time (float):
 			Moment when the TexIO is initialized.
+		subset (str):
+            Subset name. One of: [`dataset_a`, `dataset_b`].
 		writer (io stream):
 			File writer to export the counting results.
 	"""
 	
-	# Numeric identifier of input camera stream
 	video_map_a = {
 		"testA_1": 1,
 		"testA_2": 2,
@@ -70,8 +71,7 @@ class AIC22RetailCheckoutWriter:
 	):
 		super().__init__()
 		if subset not in ["test_a", "test_b"]:
-			raise ValueError(f"`subset` must be one of ['test_a', 'test_b']. "
-			                 f"But got: {subset}.")
+			raise ValueError(f"`subset` must be one of ['test_a', 'test_b']. But got: {subset}.")
 		if subset == "test_a":
 			video_map = self.video_map_a
 		else:
@@ -87,14 +87,9 @@ class AIC22RetailCheckoutWriter:
 		self.video_id 	 = video_map[camera_name]
 		self.start_time  = start_time
 		self.lines 		 = []
-		# self.init_writer(dst=self.dst)
 		
 	def __del__(self):
 		""" Close the writer object."""
-		"""
-		if self.writer:
-			self.writer.close()
-		"""
 		pass
 
 	# MARK: Configure
@@ -112,30 +107,12 @@ class AIC22RetailCheckoutWriter:
 			dst = os.path.join(dst, f"{self.camera_name}.txt")
 		parent_dir = str(Path(dst).parent)
 		create_dirs(paths=[parent_dir])
-		# self.writer = open(dst, "w")
 
 	# MARK: Write
 	
 	def write(self, moving_objects: list[Product]):
 		"""Write counting result from a list of tracked moving objects.
-		
-		Each line in the output format of AI City Challenge contains:
-		<gen_time> <video_id> <frame_id> <MOI_id> <vehicle_class_id>
-			<gen_time>:         [float] is the generation time until this
-										frame’s output is generated, from the
-										start of the program execution, in
-										seconds.
-			<video_id>:         [int] is the video numeric identifier, starting
-									  with 1.
-			<frame_id>:         [int] represents the frame count for the
-									  current frame in the current video,
-									  starting with 1.
-			<MOI_id>:           [int] denotes the the movement numeric
-									  identifier of the movement of that video.
-			<vehicle_class_id>: [int] is the road_objects classic numeric
-									  identifier, where 1 stands for “car”
-									  and 2 represents “truck”.
-		
+
 		Args:
 			moving_objects (list):
 				List of tracked moving objects.
@@ -143,10 +120,8 @@ class AIC22RetailCheckoutWriter:
 		for obj in moving_objects:
 			class_id = obj.label_id_by_majority
 			if class_id != 116:
-				# line = f"{self.video_id} {class_id + 1} {int(obj.timestamp)} {obj.label_by_majority.name}\n"
 				line = f"{self.video_id} {class_id + 1} {int(obj.timestamp)}\n"
 				self.lines.append(line)
-				# self.writer.write(line)
 	
 	def dump(self):
 		dst = self.dst
@@ -174,8 +149,7 @@ class AIC22RetailCheckoutWriter:
 			output_dir (str):
 				Directory of output track1.txt will be written
 			output_name (str):
-				Final compress result name
-					e.g.: "track1.txt"
+				Final compress result name. Example "track1.txt".
 			subset (str):
 				Subset name. One of: [`test_a`, `test_b`].
 		"""
