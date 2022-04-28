@@ -23,10 +23,10 @@ from onevision import is_torch_saved_file
 from onevision import is_yaml_file
 from onevision import scale_box_original
 from onevision import to_tensor
-from onevision.models.detection.scaled_yolov4.models import yolo
-from onevision.models.detection.scaled_yolov4.models.experimental import attempt_load
-from onevision.models.detection.scaled_yolov4.utils.datasets import letterbox
-from onevision.models.detection.scaled_yolov4.utils.general import non_max_suppression
+from onevision.vision.detection.scaled_yolov4.models import yolo
+from onevision.vision.detection.scaled_yolov4.models.experimental import attempt_load
+from onevision.vision.detection.scaled_yolov4.utils.datasets import letterbox
+from onevision.vision.detection.scaled_yolov4.utils.general import non_max_suppression
 
 __all__ = [
     "ScaledYolov4",
