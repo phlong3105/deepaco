@@ -11,7 +11,7 @@ import os
 from timeit import default_timer as timer
 
 from aic import AIC22RetailCheckoutCameraAsync
-from aic.io import AIC22RetailCheckoutWriter
+from aic import AIC22RetailCheckoutWriter
 from onevision import console
 from onevision import load_config
 

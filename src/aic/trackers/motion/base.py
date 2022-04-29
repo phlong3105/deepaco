@@ -63,7 +63,7 @@ class Motion(metaclass=abc.ABCMeta):
 		Args:
 			detection (Detection):
 				Get the specific features used to update the motion model from
-				new detection of the object.
+				new measurement of the object.
 		"""
 
     @abc.abstractmethod

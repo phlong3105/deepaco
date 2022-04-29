@@ -225,7 +225,7 @@ class AIC22RetailCheckoutCameraAsync(AIC22RetailCheckoutCamera):
         self.frames_queue.put([None, None, None, None])
     
     def run_hands_estimator(self):
-        """Run detector thread and push detection results to queue."""
+        """Run detector thread and push measurement results to queue."""
         while True:
             # NOTE: Get frame indexes and images from queue
             (images, indexes, files, rel_paths) = self.frames_queue.get()
@@ -242,7 +242,7 @@ class AIC22RetailCheckoutCameraAsync(AIC22RetailCheckoutCamera):
         self.hands_queue.put([None, None, None, None, None])
     
     def run_detector(self):
-        """Run detector thread and push detection results to queue."""
+        """Run detector thread and push measurement results to queue."""
         while True:
             # NOTE: Get frame indexes and images from queue
             (images, indexes, files, rel_paths, batch_hands) = self.hands_queue.get()

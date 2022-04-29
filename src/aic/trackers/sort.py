@@ -157,7 +157,7 @@ class SORT(BaseTracker):
 
 			# IF you don't call the function above, then call the following
 			# functions:
-			# self.tracks[track_idx].update_go_from_detection(detection=detections[detection_idx])
+			# self.tracks[track_idx].update_go_from_detection(measurement=detections[detection_idx])
 			# self.tracks[track_idx].update_motion_state()
 
 	def create_new_tracks(self, unmatched_inst_indexes: Union[list, np.ndarray], instances: list[Detection]):

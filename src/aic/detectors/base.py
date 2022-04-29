@@ -49,7 +49,7 @@ class BaseDetector(metaclass=abc.ABCMeta):
             confidence lower than this value. If `None`, don't perform
             suppression. Default: `0.5`.
         nms_max_overlap (float, optional):
-            Maximum detection overlap (non-maxima suppression threshold).
+            Maximum measurement overlap (non-maxima suppression threshold).
             If `None`, don't perform suppression. Default: `0.4`.
         device (str, optional):
             Cuda device, i.e. 0 or 0,1,2,3 or cpu. Default: `None` means CPU.
@@ -240,7 +240,7 @@ class BaseDetector(metaclass=abc.ABCMeta):
         
         valid_detections = []
         for dets in detections:
-            # NOTE: Extract detection bounding boxes and scores
+            # NOTE: Extract measurement bounding boxes and scores
             boxes  = np.array([d.box        for d in dets])
             scores = np.array([d.confidence for d in dets])
 

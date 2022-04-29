@@ -93,7 +93,7 @@ class HandsEstimator:
 	Note that it determines handedness assuming the input image is mirrored,
 	i.e., taken with a front-facing/selfie camera (
 	https://en.wikipedia.org/wiki/Front-facing_camera) with images flipped
-	horizontally. If that is not the case, use, for detection, cv2.flip(image, 1)
+	horizontally. If that is not the case, use, for measurement, cv2.flip(image, 1)
 	to flip the image first for a correct handedness output.
 	 
 	Please refer to https://solutions.mediapipe.dev/hands#python-solution-api for
@@ -116,7 +116,7 @@ class HandsEstimator:
 	        https://solutions.mediapipe.dev/hands#model_complexity.
 	        Default: `1`.
         min_detection_confidence (float):
-	        Minimum confidence value ([0.0, 1.0]) for hand detection to be
+	        Minimum confidence value ([0.0, 1.0]) for hand measurement to be
 	        considered successful. See details in
             https://solutions.mediapipe.dev/hands#min_detection_confidence.
             Default: `0.5`.

@@ -154,7 +154,7 @@ class BaseObject:
 
     @property
     def current_instance(self) -> Detection:
-        """Get the latest detection of the object."""
+        """Get the latest measurement of the object."""
         return self.detections[-1]
 
     @property
@@ -196,7 +196,7 @@ class BaseObject:
     # MARK: Update
     
     def update(self, detection: Optional[Detection], **kwargs):
-        """Update with new detection.
+        """Update with new measurement.
         
         Args:
             detection (Detection, optional):
@@ -420,7 +420,7 @@ class BaseMovingObject(BaseObject, metaclass=abc.ABCMeta):
     
     @abc.abstractmethod
     def update_trajectory(self):
-        """Update trajectory with detection's center point."""
+        """Update trajectory with measurement's center point."""
         pass
     
     @abc.abstractmethod

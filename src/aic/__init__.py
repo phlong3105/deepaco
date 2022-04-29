@@ -28,6 +28,7 @@ from __future__ import annotations
 from .builder import *
 from .camera import *
 from .detectors import *
+from .io import *
 from .objects import *
 from .trackers import *
 from .utils import *

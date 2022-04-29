@@ -25,7 +25,7 @@ __all__ = [
 # MARK: - AIC22RetailCheckoutWriter
 
 class AIC22RetailCheckoutWriter:
-	"""AIC Retail Checkout Writer periodically saves the detection results in ONE
+	"""AIC Retail Checkout Writer periodically saves the measurement results in ONE
 	camera.
 	
 	Attributes:

@@ -47,7 +47,7 @@ class Product(BaseMovingObject):
     # MARK: Update
 
     def update_trajectory(self):
-        """Update trajectory with detection's center point."""
+        """Update trajectory with measurement's center point."""
         traveled_distance = euclidean_distance(self.trajectory[-1], self.current_box_center)
         if traveled_distance >= self.min_traveled_distance:
             self.trajectory = np.append(self.trajectory, [self.current_box_center], axis=0)

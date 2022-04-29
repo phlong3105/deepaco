@@ -67,7 +67,7 @@ detector:
   # Detection confidence threshold. Disregard all detections that have a
   # confidence lower than this value.
   nms_max_overlap: 0.8
-  # Maximum detection overlap (non-maxima suppression threshold).
+  # Maximum measurement overlap (non-maxima suppression threshold).
   device: "0"
   # CUDDevice, i.e. 0 or 0,1,2,3 or cpu
 
@@ -97,7 +97,7 @@ hands_estimator:
   # Complexity of the hand landmark model: 0 or 1. Landmark accuracy as well as
   # inference latency generally go up with the model complexity.
   min_detection_confidence: 0.2
-  # Minimum confidence value ([0.0, 1.0]) for hand detection to be considered
+  # Minimum confidence value ([0.0, 1.0]) for hand measurement to be considered
   # successful.
   min_tracking_confidence: 0.2
   # Minimum confidence value ([0.0, 1.0]) for the hand landmarks to be

@@ -18,11 +18,9 @@ from aic.detectors.base import BaseDetector
 from aic.objects.detection import Detection
 from aic.utils import pretrained_dir
 from onevision import check_image_size
-from onevision import intersect_dicts
 from onevision import is_torch_saved_file
 from onevision import is_yaml_file
 from onevision import letterbox_resize
-from onevision import load_state_dict_from_path
 from onevision import scale_box_original
 from onevision import to_tensor
 from onevision.vision.detection.yolov5_v6_1.models import yolo

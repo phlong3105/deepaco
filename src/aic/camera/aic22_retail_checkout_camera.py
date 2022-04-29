@@ -31,6 +31,8 @@ from aic.pose_estimators import HandsEstimator
 from aic.trackers import BaseTracker
 from onevision import AppleRGB
 from onevision import ClassLabels
+from onevision import CVVideoLoader
+from onevision import CVVideoWriter
 from onevision import error_console
 from onevision import is_basename
 from onevision import is_json_file
@@ -38,8 +40,6 @@ from onevision import is_list_of
 from onevision import is_stem
 from onevision import is_video_file
 from onevision import progress_bar
-from onevision import CVVideoLoader
-from onevision import CVVideoWriter
 
 __all__ = [
     "AIC22RetailCheckoutCamera",
