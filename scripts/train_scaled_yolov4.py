@@ -31,7 +31,7 @@ train_configs = {
         "cfg"            : "yolov4-p5.yaml",
         "data"           : "aic22retail117.yaml",
         "hyp"            : "hyp.scratch.yaml",
-        "epochs"         : 30,
+        "epochs"         : 50,
         "batch_size"     : 32,
         "img_size"       : [448, 448],
         "rect"           : False,

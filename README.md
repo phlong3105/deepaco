@@ -32,7 +32,7 @@ python setup.py build install
 
 cd ..
 cd ..
-pip install -e .  # This will clone and install `onevision` package underhood
+pip install -e .  # This will clone and install `onevision` package
 
 # (Optional) Install `onevision` package
 cd ..
@@ -44,7 +44,7 @@ pip install -e .
 
 ## Inference
 
-Download [pretrained models](https://o365skku-my.sharepoint.com/:u:/g/personal/phlong_o365_skku_edu/Ed8cp7aBXfNDigKlqa8ByWQBed30_shRrCXa7RILhR5Dtw?e=uu4Rvl) and copy them to `aic22_track4/src/aic/pretrained/scaled_yolov4`
+Download [pretrained models](https://o365skku-my.sharepoint.com/:u:/g/personal/phlong_o365_skku_edu/Ebuz0tctfVVIgm5mbvCaCzwBdEHZDxtDRlLXqdY1BR4WOw?e=C2jULh) and copy them to `aic22_track4/src/aic/pretrained/scaled_yolov4`
 
 Download and copy testing videos to `aic22_track4/data/aic22retail/test_b`
 ```text
