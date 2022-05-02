@@ -33,6 +33,7 @@ python setup.py build install
 # Install `onevision` package
 cd ..
 cd ..
+cd ..
 git clone https://github.com/phlong3105/onevision
 cd onevision
 pip install -e .
