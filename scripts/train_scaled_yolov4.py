@@ -12,9 +12,9 @@ from argparse import Namespace
 
 import torch
 
-import onevision.vision.detection.scaled_yolov4.detect as detect
-import onevision.vision.detection.scaled_yolov4.test as test
-import onevision.vision.detection.scaled_yolov4.train as train
+import onevision.models.detection.scaled_yolov4.detect as detect
+import onevision.models.detection.scaled_yolov4.test as test
+import onevision.models.detection.scaled_yolov4.train as train
 from aic import pretrained_dir
 
 yolov4_root           = os.path.dirname(os.path.abspath(train.__file__))
@@ -28,11 +28,11 @@ data_dir              = os.path.join(content_root_dir, "data", "aic22retail")
 train_configs = {
     "yolov4-p5_aic22retail117_448" : {
         "weights"        : os.path.join(pretrained_dir, "scaled_yolov4", "yolov4-p5_coco.pt"),
-        "cfg"            : os.path.join(yolov4_root, "models", "yolov4-p5.yaml"),
+        "cfg"            : "yolov4-p5.yaml",
         "data"           : "aic22retail117.yaml",
-        "hyp"            : os.path.join(yolov4_root, "data",   "hyp.scratch.yaml"),
-        "epochs"         : 50,
-        "batch_size"     : 8,
+        "hyp"            : "hyp.scratch.yaml",
+        "epochs"         : 30,
+        "batch_size"     : 32,
         "img_size"       : [448, 448],
         "rect"           : False,
         "resume"         : False,
