@@ -41,7 +41,6 @@ cd ..
 git clone https://github.com/phlong3105/onevision
 cd onevision
 pip install -e .
-
 ```
 
 ## Inference
