@@ -45,7 +45,7 @@ pip install -e .
 
 ## Inference
 
-Download [pretrained models](https://o365skku-my.sharepoint.com/:u:/g/personal/phlong_o365_skku_edu/Ed8cp7aBXfNDigKlqa8ByWQBed30_shRrCXa7RILhR5Dtw?e=uu4Rvl) and copy them to `aic22_track4/src/aic/pretrained/scaled_yolov4`
+Download [pretrained models](https://o365skku-my.sharepoint.com/:u:/g/personal/phlong_o365_skku_edu/EXUQ5BhbarRKsQIuwk9fzl4Be6ga5X8LCzBmrO8gGFRwZQ?e=XHlJwk) and copy them to `aic22_track4/src/aic/pretrained/scaled_yolov4`
 
 Download and copy testing videos to `aic22_track4/data/aic22retail/test_b`
 ```text
