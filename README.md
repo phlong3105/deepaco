@@ -34,16 +34,19 @@ python setup.py build install
 cd ..
 cd ..
 cd ..
+pip install -e .  # This will clone and install `onevision` package underhood
+
+# (Optional) Install `onevision` package
+cd ..
 git clone https://github.com/phlong3105/onevision
 cd onevision
 pip install -e .
-cd ../aic22_track4
-pip install -e .
+
 ```
 
 ## Inference
 
-Download [pretrained models](https://drive.google.com/drive/folders/1xKCGTWnGmZBu5treyh_2i8ppWVhiOoFq?usp=sharing) and copy them to `aic22_track4/src/aic/pretrained/scaled_yolov4`
+Download [pretrained models](https://o365skku-my.sharepoint.com/:u:/g/personal/phlong_o365_skku_edu/Ed8cp7aBXfNDigKlqa8ByWQBed30_shRrCXa7RILhR5Dtw?e=uu4Rvl) and copy them to `aic22_track4/src/aic/pretrained/scaled_yolov4`
 
 Download and copy testing videos to `aic22_track4/data/aic22retail/test_b`
 ```text
@@ -81,7 +84,7 @@ python aic22_retail_checkout_all_async.py --subset "test_b" --configs "configs_y
 
 ## Training
 
-Download the training data [zip file](https://drive.google.com/file/d/1fCp6iFTKTD8yPb_HF8unvqCumJcJ9uoZ/view?usp=sharing) and extract it inside `one/datasets/aicity`:
+Download the training data [zip file](https://o365skku-my.sharepoint.com/:u:/g/personal/phlong_o365_skku_edu/EeI7PxIjYzxJoqSHyHQZYlcB0VRQZXxsWeI_sWpK6JqbQg?e=QdykE7) and extract it inside `one/datasets/aicity`:
 ```text
 one
   |__ datasets (this folder contains the actual raw data)
@@ -97,7 +100,14 @@ cd aic22_track4/scripts
 
 # Run training script
 python aic22_train_scaled_yolov4.py --run "train" --cfg "yolov4-p5_aic22retail117_448"
+
+# The new trained weights will be located at: 
+aic22_track4/src/aic/pretrained/scaled_yolov4/exp0_yolov4-p5_aic22retail117_448/weights/best.pt
+
+# After training is done, copy the best weight and rename it to: 
+aic22_track4/src/aic/pretrained/scaled_yolov4/yolov4-p5_aic22retail117_448.pt
 ```
+
 
 ## Citation
 
