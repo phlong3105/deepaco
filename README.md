@@ -34,7 +34,7 @@ python setup.py build install
 cd ..
 cd ..
 cd ..
-pip install -e .  # This will clone and install `onevision` package underhood
+pip install -e .  # This will clone and install `onevision` package
 
 # (Optional) Install `onevision` package
 cd ..
