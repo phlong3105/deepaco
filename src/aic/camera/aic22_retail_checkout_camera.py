@@ -198,7 +198,7 @@ class AIC22RetailCheckoutCamera(BaseCamera):
             rois (list[ROI], dict):
                 List of ROIs or a config dictionary.
         """
-        if is_list_of(rois, item_type=ROI):
+        if is_list_of(rois, expected_type=ROI):
             self.rois = rois
         elif isinstance(rois, dict):
             file = rois["file"]
@@ -219,7 +219,7 @@ class AIC22RetailCheckoutCamera(BaseCamera):
             mois (list[MOI], dict):
                 List of MOIs or a config dictionary.
         """
-        if is_list_of(mois, item_type=MOI):
+        if is_list_of(mois, expected_type=MOI):
             self.mois = mois
         elif isinstance(mois, dict):
             file = mois["file"]

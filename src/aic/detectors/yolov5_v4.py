@@ -24,8 +24,8 @@ from onevision import letterbox_resize
 from onevision import load_state_dict_from_path
 from onevision import scale_box_original
 from onevision import to_tensor
-from onevision.vision.detection.yolov5_v4.models import yolo
-from onevision.vision.detection.yolov5_v4.utils.general import non_max_suppression
+from onevision.models.detection.yolov5_v4.models import yolo
+from onevision.models.detection.yolov5_v4.utils.general import non_max_suppression
 
 __all__ = [
     "YOLOv5_v4",
