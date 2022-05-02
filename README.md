@@ -19,16 +19,23 @@ mkdir -p one/datasets
 cd one
 
 # Install `aic22_track4` package
-git clone git@github.com:phlong3105/aic22_track4
+git clone https://github.com/phlong3105/aic22_track4
 cd aic22_track4/install
 sh ./install.sh    # Create conda environment
 sudo ./install.sh  # Install package using `sudo`. When prompt to input the 
                    # dataset directory path, you should enter: <some-path>/one/datasets
 
 # Install `mish-cuda` package
+conda activate one
 cd mish-cuda
 python setup.py build install
 
+cd ..
+cd ..
+git clone https://github.com/phlong3105/onevision
+cd onevision
+pip install -e .
+cd ../aic22_track4
 pip install -e .
 ```
 
