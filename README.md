@@ -32,6 +32,7 @@ pip install --upgrade -e .  # This will clone and install `onevision` package
 
 # (Optional) Install `onevision` package
 cd ..
+conda activate one
 git clone https://github.com/phlong3105/onevision
 cd onevision
 pip install --upgrade -e .
