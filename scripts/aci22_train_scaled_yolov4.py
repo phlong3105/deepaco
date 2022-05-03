@@ -32,7 +32,7 @@ train_configs = {
         "data"           : "aic22retail117.yaml",
         "hyp"            : "hyp.scratch.yaml",
         "epochs"         : 50,
-        "batch_size"     : 32,
+        "batch_size"     : 16,
         "img_size"       : [448, 448],
         "rect"           : False,
         "resume"         : False,
