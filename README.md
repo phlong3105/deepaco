@@ -28,6 +28,7 @@ conda init bash
 
 cd ..
 conda activate one
+pip install git+https://github.com/JunnYu/mish-cuda.git
 pip install --upgrade -e .  # This will clone and install `onevision` package
 
 # (Optional) Install `onevision` package
