@@ -82,7 +82,7 @@ python aic22_retail_checkout_all_async.py --subset "test_b" --configs "configs_y
 
 ## Training
 
-Download the training data [zip file](https://o365skku-my.sharepoint.com/:u:/g/personal/phlong_o365_skku_edu/EeI7PxIjYzxJoqSHyHQZYlcB0VRQZXxsWeI_sWpK6JqbQg?e=zBzh3j) and extract it inside `one/datasets/aicity`:
+Download the training data [zip file](https://o365skku-my.sharepoint.com/:u:/g/personal/phlong_o365_skku_edu/EXmFKp_8KKNFv9VC1POLr5cBE6RXIw39HqvIg5ajBXsq7g?e=M0BSLo) and extract it inside `one/datasets/aicity`:
 ```text
 one
   |__ datasets (this folder contains the actual raw data)
