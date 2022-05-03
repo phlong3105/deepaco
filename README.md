@@ -27,7 +27,6 @@ conda init bash
               # dataset directory path, you should enter: <some-path>/one/datasets
 
 cd ..
-cd ..
 pip install --upgrade -e .  # This will clone and install `onevision` package
 
 # (Optional) Install `onevision` package
