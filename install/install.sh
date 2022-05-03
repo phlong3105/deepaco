@@ -2,6 +2,7 @@
 
 # Install:
 # chmod +x install.sh
+# conda init bash
 # ./install.sh
 
 script_path=$(readlink -f "$0")
@@ -26,40 +27,15 @@ case "$OSTYPE" in
     echo "Create 'one' environment:"
     env_yml_path="${current_dir}/environment.yml"
     conda env create -f "${env_yml_path}"
+    eval "$(conda shell.bash hook)"
     conda activate one
     pip install --upgrade pip
-    conda update --a --y
-    conda clean --a --y
-
-    # Install from 'apt'
-    echo "Install from 'apt':"
-    apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/7fa2af80.pub
-    bash -c 'echo "deb http://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64 /" > /etc/apt/sources.list.d/cuda.list'
-    bash -c 'echo "deb http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu2004/x86_64 /" > /etc/apt/sources.list.d/cuda_learn.list'
-    apt-get update --allow-insecure-repositories
-    apt-get install cuda-11-3 -y --allow-unauthenticated
-    apt-get install libcudnn8 -y --allow-unauthenticated
-    apt-get install ffmpeg -y
-    apt-get install libvips -y
-    apt-get install libxcb-icccm4
-    apt-get install libxcb-xkb1
-    apt-get install libxcb-icccm4
-    apt-get install libxcb-image0
-    apt-get install libxcb-render-util0
-    apt-get install libxcb-render-util0
-    apt-get install libxcb-randr0
-    apt-get install libxcb-keysyms1
-    apt-get install libxcb-xinerama0
-
+    # conda update --a --y
+    # conda clean --a --y
+    
     # Install `mish-cuda`
     echo "Install 'mish-cuda':"
-    mish_cuda_dir="${current_dir}/mish-cuda"
-    cd "$mish_cuda_dir" || exit
-    apt install gcc-10 -y --allow-unauthenticated
-    apt install g++-10 -y --allow-unauthenticated
-    update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 10
-    update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10 10
-    python setup.py build install
+    pip install git+https://github.com/JunnYu/mish-cuda.git
     ;;
   darwin*)
     echo "Mac OS"
