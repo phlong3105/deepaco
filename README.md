@@ -26,6 +26,7 @@ conda init bash
 ./install.sh  # Install package using `sudo`. When prompt to input the 
               # dataset directory path, you should enter: <some-path>/one/datasets
 
+conda activate one
 cd ..
 pip install --upgrade -e .  # This will clone and install `onevision` package
 
