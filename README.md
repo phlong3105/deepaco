@@ -32,13 +32,13 @@ python setup.py build install
 
 cd ..
 cd ..
-pip install -e .  # This will clone and install `onevision` package
+pip install --upgrade -e .  # This will clone and install `onevision` package
 
 # (Optional) Install `onevision` package
 cd ..
 git clone https://github.com/phlong3105/onevision
 cd onevision
-pip install -e .
+pip install --upgrade -e .
 
 ```
 
