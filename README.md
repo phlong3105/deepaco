@@ -21,14 +21,10 @@ cd one
 # Install `aic22_track4` package
 git clone https://github.com/phlong3105/aic22_track4
 cd aic22_track4/install
-sudo bash -i install.sh  # Install package using `sudo`. When prompt to input the 
-                         # dataset directory path, you should enter: <some-path>/one/datasets
-bash -i install.sh       # Create conda environment
-
-# Install `mish-cuda` package
-conda activate one
-cd mish-cuda
-python setup.py build install
+chmod +x install.sh
+conda init bash
+./install.sh  # Install package using `sudo`. When prompt to input the 
+              # dataset directory path, you should enter: <some-path>/one/datasets
 
 cd ..
 cd ..
@@ -39,7 +35,6 @@ cd ..
 git clone https://github.com/phlong3105/onevision
 cd onevision
 pip install --upgrade -e .
-
 ```
 
 ## Inference
