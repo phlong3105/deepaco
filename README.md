@@ -11,8 +11,22 @@ building solutions for the 2022 AI City Challenge Track 4
 We recommend using Ubuntu 20.04, Python 3.9+ and PyTorch (version >= v1.11.0) with `conda` environment .
 We also use PyCharm as the main IDE. 
 
-The `aic22_track4` can be installed in the local python environment using the below commands:
+The `aic22_track4` can be installed using either `docker` or `conda`.
 
+Installation using Docker (recommended):
+```shell
+mkdir -p one
+mkdir -p one/datasets
+cd one
+git clone https://github.com/phlong3105/aic22_track4
+
+nvidia-docker run --name aic22_track4 -it -v <absolute-path-to-aic22-track4>/:/aic22_track4/ --shm-size=64g aic22_track4
+
+# For example:
+# nvidia-docker run --name aic22_track4 -it -v /home/longpham/Downloads/one/aic22_track4/:/aic22_track4/ --shm-size=64g aic22_track4
+```
+
+Installation using `conda`:
 ```shell
 mkdir -p one
 mkdir -p one/datasets
@@ -34,7 +48,7 @@ pip install --upgrade -e .  # This will clone and install `onevision` package
 
 ## Inference
 
-Download [pretrained models](https://o365skku-my.sharepoint.com/:u:/g/personal/phlong_o365_skku_edu/EX7Rn_xKsAlEgEW6RDCOTBABB90GAUA76-vFVr0Mwme9_w?e=96gV5b) and copy them to `aic22_track4/src/aic/pretrained/scaled_yolov4`
+If you use Docker, then skip this step. Download [pretrained models](https://o365skku-my.sharepoint.com/:u:/g/personal/phlong_o365_skku_edu/EX7Rn_xKsAlEgEW6RDCOTBABB90GAUA76-vFVr0Mwme9_w?e=96gV5b) and copy them to `aic22_track4/src/aic/pretrained/scaled_yolov4`.
 
 Download and copy testing videos to `aic22_track4/data/aic22retail/test_b`
 ```text
@@ -60,7 +74,6 @@ one
 
 Run inference code:
 ```shell
-conda activate one  # By default, our conda environment is named `one`
 cd aic22_track4/scripts
 
 # Run synchronous processing pipeline
@@ -72,7 +85,7 @@ python aic22_retail_checkout_all_async.py --subset "test_b" --configs "configs_y
 
 ## Training
 
-Download the training data [zip file](https://o365skku-my.sharepoint.com/:u:/g/personal/phlong_o365_skku_edu/EXmFKp_8KKNFv9VC1POLr5cBE6RXIw39HqvIg5ajBXsq7g?e=M0BSLo) and extract it inside `one/datasets/aicity`:
+If you use Docker, then skip this step. Download the training data [zip file](https://o365skku-my.sharepoint.com/:u:/g/personal/phlong_o365_skku_edu/EXmFKp_8KKNFv9VC1POLr5cBE6RXIw39HqvIg5ajBXsq7g?e=M0BSLo) and extract it inside `one/datasets/aicity`:
 ```text
 one
   |__ datasets (this folder contains the actual raw data)
@@ -83,7 +96,6 @@ one
 
 Run training script:
 ```shell
-conda activate one  # By default, our conda environment is named `one`
 cd aic22_track4/scripts
 
 # Run training script
