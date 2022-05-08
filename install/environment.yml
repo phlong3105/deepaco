@@ -26,6 +26,7 @@ channels:
 
 dependencies:
   - cudatoolkit=11.3
+  - cudatoolkit-dev=11.3
   - cudnn
     # CUDA is a parallel computing platform and programming model developed by
     # NVIDIA for general computing on graphical processing units (GPUs).
