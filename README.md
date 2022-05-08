@@ -55,6 +55,7 @@ Copy testing videos to `aic22_track4/data/aic22retail/test_b` using docker comma
 docker cp testB_1.mp4 aic22_track4:/aic22_track4/data/aic22retail/test_b/testB_1.mp4
 ```
 
+The directory hierarchy should look like this:
 ```text
 one
   |__ datasets (this folder contains the actual raw data)
