@@ -117,9 +117,9 @@ python aic22_train_scaled_yolov4.py --run "train" --cfg "yolov4-p5_aic22retail11
 # aic22_track4/src/aic/pretrained/scaled_yolov4/exp0_yolov4-p5_aic22retail117_448/weights/best.pt
 
 # After training is done, copy the best weight and rename it to: 
-yes | cp \ 
-aic22_track4/src/aic/pretrained/scaled_yolov4/exp0_yolov4-p5_aic22retail117_448/weights/best.pt \
-aic22_track4/src/aic/pretrained/scaled_yolov4/yolov4-p5_aic22retail117_448_2.pt
+yes | cp \
+../src/aic/pretrained/scaled_yolov4/exp0_yolov4-p5_aic22retail117_448/weights/best.pt \
+../src/aic/pretrained/scaled_yolov4/yolov4-p5_aic22retail117_448_2.pt
 
 # Run inference using the newly trained weights
 python aic22_retail_checkout_all.py --subset "test_a" --configs "configs_yolov4p5_448_2" --save_results True
