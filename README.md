@@ -49,7 +49,12 @@ pip install --upgrade -e .  # This will clone and install `onevision` package
 
 If you use Docker, then skip this step. Download [pretrained models](https://o365skku-my.sharepoint.com/:u:/g/personal/phlong_o365_skku_edu/EX7Rn_xKsAlEgEW6RDCOTBABB90GAUA76-vFVr0Mwme9_w?e=96gV5b) and copy them to `aic22_track4/src/aic/pretrained/scaled_yolov4`.
 
-Download and copy testing videos to `aic22_track4/data/aic22retail/test_b`
+Copy testing videos to `aic22_track4/data/aic22retail/test_b` using docker command:
+
+```shell
+docker cp testB_1.mp4 aic22_track4:/aic22_track4/data/aic22retail/test_b/testB_1.mp4
+```
+
 ```text
 one
   |__ datasets (this folder contains the actual raw data)
