@@ -32,8 +32,8 @@ case "$OSTYPE" in
     pip install --upgrade pip
 
     # Install `mish-cuda`
-    echo "Install 'mish-cuda':"
-    pip install git+https://github.com/JunnYu/mish-cuda.git
+    # echo "Install 'mish-cuda':"
+    # pip install git+https://github.com/JunnYu/mish-cuda.git
 
     # Remove `cv2/plugin` folder:
     rm -rf $CONDA_PREFIX/lib/python3.9/site-packes/cv2/plugin
