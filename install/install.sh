@@ -78,19 +78,19 @@ esac
 
 # Set environment variables
 # shellcheck disable=SC2162
-datasets_dir="${one_dir}/datasets"
-read -e -i "$datasets_dir" -p "Enter DATASETS_DIR= " input
-datasets_dir="${input:-$datasets_dir}"
+# datasets_dir="${one_dir}/datasets"
+# read -e -i "$datasets_dir" -p "Enter DATASETS_DIR= " input
+# datasets_dir="${input:-$datasets_dir}"
 
-if [ "$datasets_dir" != "" ]; then
-  export DATASETS_DIR="$datasets_dir"
-  conda env config vars set datasets_dir="$datasets_dir"
-  echo "DATASETS_DIR has been set."
-else
-  echo "DATASETS_DIR has NOT been set."
-fi
+# if [ "$datasets_dir" != "" ]; then
+#   export DATASETS_DIR="$datasets_dir"
+#   conda env config vars set datasets_dir="$datasets_dir"
+#   echo "DATASETS_DIR has been set."
+# else
+#   echo "DATASETS_DIR has NOT been set."
+# fi
 
-if [ -d "$onevision_dir" ];
-then
-	echo "DATASETS_DIR=$datasets_dir" > "${onevision_dir}/pycharm.env"
-fi
+# if [ -d "$onevision_dir" ];
+# then
+# 	echo "DATASETS_DIR=$datasets_dir" > "${onevision_dir}/pycharm.env"
+# fi
