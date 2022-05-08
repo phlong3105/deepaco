@@ -94,7 +94,7 @@ def parse_args():
     parser.add_argument("--subset",       default="test_b",      help="Subset name. One of: [`test_a`, `test_b`].")
     parser.add_argument("--configs",      default="configs_yolov4p5_448",)
     parser.add_argument("--batch_size",   default=1,     type=int, help="Max batch size")
-    parser.add_argument("--verbose",      default=True, help="Should visualize the images.")
+    parser.add_argument("--verbose",      default=False, help="Should visualize the images.")
     parser.add_argument("--save_image",   default=False, help="Should save results to images.")
     parser.add_argument("--save_video",   default=False, help="Should save results to a video.")
     parser.add_argument("--save_results", default=True,  help="Should save results to file.")
