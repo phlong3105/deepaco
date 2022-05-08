@@ -13,7 +13,7 @@ We also use PyCharm as the main IDE.
 
 The `aic22_track4` can be installed using either `docker` or `conda`.
 
-Installation using Docker (recommended):
+**Installation using Docker (recommended)**:
 ```shell
 mkdir -p one
 mkdir -p one/datasets
