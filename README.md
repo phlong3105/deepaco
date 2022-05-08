@@ -21,7 +21,6 @@ cd one
 git clone https://github.com/phlong3105/aic22_track4
 
 nvidia-docker run --name aic22_track4 -it -v <absolute-path-to-aic22-track4>/:/aic22_track4/ --shm-size=64g phlong/aic22_track4
-
 # For example:
 # nvidia-docker run --name aic22_track4 -it -v /home/longpham/Downloads/one/aic22_track4/:/aic22_track4/ --shm-size=64g phlong/aic22_track4
 ```
