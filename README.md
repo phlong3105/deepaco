@@ -49,10 +49,17 @@ pip install --upgrade -e .  # This will clone and install `onevision` package
 
 If you use Docker, then skip this step. Download [pretrained models](https://o365skku-my.sharepoint.com/:u:/g/personal/phlong_o365_skku_edu/EX7Rn_xKsAlEgEW6RDCOTBABB90GAUA76-vFVr0Mwme9_w?e=96gV5b) and copy them to `aic22_track4/src/aic/pretrained/scaled_yolov4`.
 
-Copy testing videos to `aic22_track4/data/aic22retail/test_b` using docker command:
+Copy testing videos to `aic22_track4/data/aic22retail/test_b`. Open a new terminal and enter:
 
 ```shell
-docker cp testB_1.mp4 aic22_track4:/aic22_track4/data/aic22retail/test_b/testB_1.mp4
+docker cp testB_1.mp4 CONTAINER_ID:/aic22_track4/data/aic22retail/test_b/testB_1.mp4
+docker cp testB_2.mp4 CONTAINER_ID:/aic22_track4/data/aic22retail/test_b/testB_2.mp4
+docker cp testB_3.mp4 CONTAINER_ID:/aic22_track4/data/aic22retail/test_b/testB_3.mp4
+docker cp testB_4.mp4 CONTAINER_ID:/aic22_track4/data/aic22retail/test_b/testB_4.mp4
+docker cp testB_5.mp4 CONTAINER_ID:/aic22_track4/data/aic22retail/test_b/testB_5.mp4
+
+# To obtain the CONTAINER_ID:
+docker ps -a
 ```
 
 The directory hierarchy should look like this:
@@ -77,7 +84,7 @@ one
                     |__ ...
 ```
 
-Run inference code:
+Enter docker container and run the inference code:
 ```shell
 cd aic22_track4/scripts
 
@@ -99,7 +106,7 @@ one
   |__ aic22_track4
 ```
 
-Run training script:
+Enter docker container and run the training script:
 ```shell
 cd aic22_track4/scripts
 
