@@ -352,6 +352,7 @@ class AIC22RetailCheckoutCamera(BaseCamera):
                 result_writer["dst"] = os.path.join(self.outputs_dir, f"{dst}.txt")
             else:
                 result_writer["dst"] = os.path.join(self.outputs_dir, f"{self.name}.txt")
+	    result_writer["subset"]      = self.subset
             result_writer["camera_name"] = result_writer.get("camera_name", self.name)
             self.result_writer           = AIC22RetailCheckoutWriter(**result_writer)
 
