@@ -18,8 +18,6 @@ The `aic22_track4` can be installed using either `docker` or `conda`.
 
 ```shell
 nvidia-docker run --name aic22_track4 -it --shm-size=64g phlong/aic22_track4
-# For example:
-# nvidia-docker run --name aic22_track4 -it -v /home/longpham/Downloads/one/aic22_track4/:/aic22_track4/ --shm-size=64g phlong/aic22_track4
 ```
 
 </details>
